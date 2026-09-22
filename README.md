@@ -47,7 +47,7 @@ During a SYN flood, a large number of connection requests are sent without compl
 
 The controlled SYN-flood scenario was observed within the isolated lab network.
 
-![TCP SYN flood traffic](assets/screenshots/01-tcp-syn-flood-traffic.png)
+![TCP SYN flood traffic](assets/screenshot/01-tcp-syn-flood-traffic.png)
 
 **Observation:** The victim received numerous TCP packets with the `SYN` flag, but the corresponding connections were not completed with final acknowledgements.
 
