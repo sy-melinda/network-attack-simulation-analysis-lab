@@ -79,7 +79,52 @@ Potential defences include:
 - Alerting on abnormal SYN-to-ACK ratios.
 - Using upstream DDoS protection for internet-facing services.
 
+---
 
+## 2. ARP Cache Poisoning Analysis
+
+### Attack Technique 
+
+The address Resolution Protocol (ARP) maps IPv4 addresses to MAC addresses within a local network. Devices store these mappings temporarily in an ARP cache.
+
+ARP does not provide built-in authentication. A forged ARP reply may therefore cause a device to associate a legitimate IP addresses within an incorrect MAC address.
+
+An attacker may use ARP cache poisoning to:
+
+- Redirect network traffic.
+- Position themselves between two communicating systems.
+- Observe unencrypted information.
+- Modify traffic in transit.
+- Disrupt network connectivity.
+
+### Observing the Forged ARP Reply
+
+A controlled forged ARP reply was generated within the isolated lab network.
+
+![ARP cache poisoning](assets/screenshot/02-arp-cache-poisoning.png)
+
+**Observation:** The server accepted the forged ARP information and updated its cache with an incorrect MAC-address mapping.
+
+**Result:** The experiment demonstrated how a device can trust an unsolicited or falsified ARP reply when no additional protections are enabled.
+
+### Security Analysis
+
+ARP cache poisoning can support a man-in-the-middle attack by causing traffic to pass through an attacker-controlled system. It can also create a denial-of-service condition if traffic is redirected to an invalid or unreachable destination.
+
+The impact is generally limited to the local broadcast domain, but the attack can still expose sensitive internal communications.
+
+### Defensive Recommendations
+
+Potential defences include:
+
+- Configuring static ARP entries for critical systems where pratical.
+- Enabling Dynamic ARP Inspection on supported switches.
+- Using DHCP snooping to establish trusted address bindings.
+- Segmenting networks to reduce the size of broadcast domains.
+- Monitoring unexpected changes in IP-to-MAC mappings.
+- Alerting when one MAC address becomes associated with multiple IP addresses.
+- Using encrypted protocols such as SSH, HTTPS, and TLS.
+- Applying port-security controls on managed switches.
 
 
 
