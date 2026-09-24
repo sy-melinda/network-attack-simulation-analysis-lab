@@ -126,5 +126,57 @@ Potential defences include:
 - Using encrypted protocols such as SSH, HTTPS, and TLS.
 - Applying port-security controls on managed switches.
 
+---
+
+# 3. ICMP Redirect Spoofing Analysis
+
+### Attack Technique
+
+ICMP redirect messages are intended to inform a host that a more appropriate gateway exists for reaching a particular destination.
+
+If a host accepts an unauthorized or forged ICMP redirect, an attacker may attempt to alter its routing behavior. Traffic could then be redirected through an attacker-controlled system or sent to an incorrect gateway.
+
+Potential consequences include:
+
+- Network traffic interception.
+- Man-in-the-middle positioning.
+- Traffic manipulation.
+- Loss of connectivity.
+- Exposure of unencrypted information.
+
+### Observing the ICMP Redirect
+
+A controlled ICMP redirect packet was introduced into the isolated lab network while the resulting traffic was observed.
+
+![ICMP redirect spoofing](assets/screenshot/03-icmp-redirect-spoofing.png)
+
+**Observation:** The victim accepted the spoofed ICMP redirect and processed the routing information contained in the message.
+
+**Result:** The experiment demonstrated how trusting unauthorized redirect messages may allow an attacker to influence a host's network path.
+
+### Security Analysis
+
+ICMP redirect spoofing targets routing decisions rather than directly compromising an application. If an attacker successfully redirects traffic, the technique may support interception, manipulation or denial of sesrvice.
+
+The practical impact depends on the host operating system, network configuration and whether ICMP redirects are accepted.
+
+### Defensive Recommendations
+
+Potential defences include:
+
+- Disabling ICMP redirect acceptance on endpoints that do not require it.
+- Preventing routers from sending unnecessary ICMP redirects.
+- Using authenticated and securely configured routing protocols.
+- Applying ingress filtering to reduce spoofed traffic.
+- Monitoring unexpected routing-table changes.
+- Alerting on ICMP redirect messages from unauthorized sources.
+- Using encrypted application protocols to protect redirected traffic.
+- Segmenting critical systems from untrusted network devices.
+
+  
+
+
+
+
 
 
