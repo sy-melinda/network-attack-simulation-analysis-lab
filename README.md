@@ -173,7 +173,28 @@ Potential defences include:
 - Using encrypted application protocols to protect redirected traffic.
 - Segmenting critical systems from untrusted network devices.
 
-  
+---
+
+## Key Findings
+
+| Attack | Observation | Security impact |
+| --- | --- | --- |
+| TCP SYN flood | Numerous SYN packets were received without completion of the TCP handshake | Half-open connections may consume resources and disrupt service availability |
+| ARP cache poisoning | The victim accepted a forged IP-to-MAC address mapping | Traffic may be redirected, intercepted or disrupted within the local network |
+| ICMP redirect spoofing | The victim accepted routing information from a spoofed redirect message | An attacker may influence the victim's network path |
+
+## Attack Comparison
+
+| characteristic | SYN flood | ARP poisoning | ICMP redirect spoofing |
+| --- | --- | --- | --- |
+| Primary target | Service availability | Local address resolution | Host routing decisions |
+| Security property affected | Availability | Confidentiality, integrity and availability |
+| Typical scope | Local or remote service | Local broadcast domain | Host or local network |
+| Main indicator | High volume of incomplete TCP handshakes | Unexpected IP-to-MAC mapping changes | Unexpected ICMP redirect messages |
+| Example defence | SYN cookies and rate limiting | Dynamic ARP Inspection | Disable unnecessary ICMP redirects |
+
+## Defensive Recommendations
+
 
 
 
