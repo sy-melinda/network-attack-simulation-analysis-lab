@@ -188,13 +188,35 @@ Potential defences include:
 | characteristic | SYN flood | ARP poisoning | ICMP redirect spoofing |
 | --- | --- | --- | --- |
 | Primary target | Service availability | Local address resolution | Host routing decisions |
-| Security property affected | Availability | Confidentiality, integrity and availability |
+| Security property affected | Availability | Confidentiality, integrity and availability | Confidentiality, integrity and availability |
 | Typical scope | Local or remote service | Local broadcast domain | Host or local network |
 | Main indicator | High volume of incomplete TCP handshakes | Unexpected IP-to-MAC mapping changes | Unexpected ICMP redirect messages |
 | Example defence | SYN cookies and rate limiting | Dynamic ARP Inspection | Disable unnecessary ICMP redirects |
 
 ## Defensive Recommendations
 
+- Enable SYN cookies and rate limiting to reduce SYN-flood impact.
+- Use Dynamic ARP Inspection and DHCP snooping to prevent forged ARP mappings.
+- Disable ICMP redirects where they are not required.
+- Monitor abnormal TCP, ARP and ICMP activity.
+- Use network segmentation, anti-spoofing controls and encrypted protocols.
+
+## Skills Demonstrated
+
+- TCP handshake and SYN-flood analysis
+- ARP cache-poisoning analysis
+- ICMP redirect analysis
+- Wireshark and Linux traffic inspection
+- Identification of network-security risks
+- Development of defensive recommendations
+
+## Conclusion
+
+This lab demonstrated how SYN flooding, ARP poisoning and ICMP redirect spoofing can affect network availability, traffic integrity and routing behavior.
+
+The results highlight the importance of layered controls, secure network configuration and continuous traffic monitoring.
+
+> **Disclaimer:** All testing was performed in an isolated and authorized university lab environment for educational and defensive purposes.
 
 
 
